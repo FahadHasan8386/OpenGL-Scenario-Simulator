@@ -876,3 +876,7 @@
 1526093416 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\math.h
 	<crtdefs.h>
 
+1777976887 source:e:\repository\opengl-scenario-simulator\mini city life\main.cpp
+	<math.h>
+	<stdlib.h>
+
