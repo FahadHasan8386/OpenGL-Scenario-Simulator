@@ -21,7 +21,7 @@ float carX1 = -20.0f;
 float carX2 = 115.0f;
 float carX3 = -35.0f;
 
-const float CLOUD_SPEED1 = 0.8f;
+const float CLOUD_SPEED1 = 0.25f;
 const float CLOUD_SPEED2 = 0.05f;
 const float CLOUD_SPEED3 = 0.06f;
 const float CAR_SPEED1   = 0.25f;
@@ -510,7 +510,7 @@ void drawBench(float x, float y, float scale)
 }
 
 
-//  DISPLAY SCENE 1
+///  DISPLAY SCENE 1
 void displayScene1()
 {
     drawSky();
@@ -544,7 +544,7 @@ void displayScene1()
     drawCar(carX2,      25.5f, 0.15f,0.70f,0.20f, false);
 }
 
-//  SCENE 2
+///  SCENE 2 Hill
 void drawScene2Hills()
 {
     glColor3f(0.45f,0.68f,0.38f);
@@ -643,7 +643,7 @@ glVertex2f(x+w-0.5f-hw,y+3.0f);
     glEnd();
 }
 
-//  VILLAGE
+///  VILLAGE
 void drawVillage()
 {
     drawHouse( 2, 34,12,10, 0.80f,0.55f,0.40f, 0.55f,0.22f,0.12f);
@@ -704,7 +704,7 @@ void update(int)
     glutTimerFunc(16,update,0);
 }
 
-//  KEYBOARD
+///  KEYBOARD
 void handleKey(unsigned char key, int, int)
 {
     switch(key) {
@@ -712,20 +712,20 @@ void handleKey(unsigned char key, int, int)
         case '2': currentScene=2; break;
         case 'n': case 'N': isNight=true;  nightLights=true;  break;
         case 'd': case 'D': isNight=false; nightLights=false; break;
-        case 'u': case 'U':                          // speed up
+        case 'u': case 'U':                          /// speed up
             speedMul += 0.5f;
-            if (speedMul > 5.0f) speedMul = 5.0f;   // max 5x
+            if (speedMul > 5.0f) speedMul = 5.0f;   /// max 5x
             break;
-        case 'l': case 'L':                          // slow down
+        case 'l': case 'L':                          /// slow down
             speedMul -= 0.5f;
-            if (speedMul < 0.5f) speedMul = 0.5f;   // min 0.5x
+            if (speedMul < 0.5f) speedMul = 0.5f;   /// min 0.5x
             break;
         case 'q': case 'Q': exit(0);
     }
     glutPostRedisplay();
 }
 
-//  MOUSE CLICK
+///  MOUSE CLICK
 void handleMouse(int button, int state, int x, int y)
 {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
@@ -735,7 +735,7 @@ void handleMouse(int button, int state, int x, int y)
     }
 }
 
-//  INIT + MAIN
+///MAIN
 void init()
 {
     glMatrixMode(GL_PROJECTION);
