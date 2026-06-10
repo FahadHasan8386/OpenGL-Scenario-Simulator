@@ -21,7 +21,7 @@ float carX1 = -20.0f;
 float carX2 = 115.0f;
 float carX3 = -35.0f;
 
-const float CLOUD_SPEED1 = 0.25f;
+const float CLOUD_SPEED1 = 0.80f;
 const float CLOUD_SPEED2 = 0.05f;
 const float CLOUD_SPEED3 = 0.06f;
 const float CAR_SPEED1   = 0.25f;
@@ -99,7 +99,7 @@ void drawMoon()
     drawCircle(82.5f,89.5f,3.2f,40);
 }
 
-void drawCloud(float cx, float cy, float scale)
+void drawCloud(float cx, float cy, float scale ,bool facingRight)
 {
     if (!isNight)
         glColor3f(1.00f,1.00f,1.00f);
@@ -517,9 +517,9 @@ void displayScene1()
     drawStars();
     if (!isNight) drawSun(); else drawMoon();
 
-    drawCloud(cloudX1,cloudY1,0.70f);
-    drawCloud(cloudX2,cloudY2,0.60f);
-    drawCloud(cloudX3,cloudY3,0.55f);
+    drawCloud(cloudX1,cloudY1,0.70f , false);
+    drawCloud(cloudX2,cloudY2,0.60f , true);
+    drawCloud(cloudX3,cloudY3,0.55f, true);
 
 
     drawRiver();
@@ -661,9 +661,9 @@ void displayScene2()
     drawStars();
     if (!isNight) drawSun(); else drawMoon();
 
-    drawCloud(cloudX1,cloudY1,0.70f);
-    drawCloud(cloudX2,cloudY2,0.60f);
-    drawCloud(cloudX3,cloudY3,0.55f);
+    drawCloud(cloudX1,cloudY1,0.70f , false);
+    drawCloud(cloudX2,cloudY2,0.60f , true);
+    drawCloud(cloudX3,cloudY3,0.55f , false);
 
     drawScene2Hills();
     drawRiver2();
@@ -695,7 +695,7 @@ float speedMul = 1.0f;
 void update(int)
 {
     cloudX1 += CLOUD_SPEED1 * speedMul; if(cloudX1>115) cloudX1=-25;
-    cloudX2 += CLOUD_SPEED2 * speedMul; if(cloudX2>115) cloudX2=-25;
+    cloudX2 -= CLOUD_SPEED2 * speedMul; if(cloudX2>115) cloudX2=25;
     cloudX3 += CLOUD_SPEED3 * speedMul; if(cloudX3>115) cloudX3=-25;
     carX1   += CAR_SPEED1   * speedMul; if(carX1> 115)  carX1=-12;
     carX2   -= CAR_SPEED2   * speedMul; if(carX2<-15)   carX2= 115;
